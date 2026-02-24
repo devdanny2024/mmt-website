@@ -39,9 +39,9 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1658317705991-cb398ae81043?auto=format&fit=crop&w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background to-background" />
         <div className="relative mx-auto max-w-7xl px-4 py-28 text-center sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">MMT - Makruten Market Tunnels</p>
+          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">MMT - MAKRUTEN MARKET TUNNELS</p>
           <h1 className="mx-auto mb-6 max-w-5xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-            Let&apos;s get you a grip on your industry&apos;s market.
+            &quot;Let&apos;s get you a grip on your industry&apos;s market.&quot;
           </h1>
           <p className="mx-auto mb-10 max-w-3xl text-xl text-muted-foreground">
             We provide Sales Outsourcing for teams that need disciplined execution and measurable pipeline progress. We are not a marketing agency.
@@ -93,10 +93,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <h2 className="mb-4 text-4xl font-bold">Need a reliable sales execution partner?</h2>
-        <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">Tell us your goals, and MMT will map a practical Sales Outsourcing plan around them.</p>
-        <a href="mailto:hello@mmt.company" className="rounded-md bg-accent px-8 py-4 text-lg font-semibold text-white hover:opacity-90">hello@mmt.company</a>
+      <section id="contact" className="border-t border-border bg-card/50 py-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <article className="rounded-xl border border-border bg-background/40 p-8">
+            <h2 className="mb-3 text-4xl font-bold">Contact Us</h2>
+            <p className="mb-8 text-muted-foreground">
+              Tell us your market and sales goals. We&apos;ll map a practical Sales Outsourcing execution plan with clear weekly actions.
+            </p>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p><span className="font-semibold text-foreground">Email:</span> hello@mmt.company</p>
+              <p><span className="font-semibold text-foreground">Focus:</span> Sales Outsourcing only</p>
+              <p><span className="font-semibold text-foreground">Positioning:</span> We are not a marketing agency.</p>
+            </div>
+          </article>
+
+          <form className="rounded-xl border border-border bg-background/40 p-8">
+            <div className="grid gap-4">
+              <input className="rounded-md border border-border bg-background px-4 py-3" placeholder="Full name" />
+              <input className="rounded-md border border-border bg-background px-4 py-3" placeholder="Work email" />
+              <input className="rounded-md border border-border bg-background px-4 py-3" placeholder="Company" />
+              <textarea className="min-h-32 rounded-md border border-border bg-background px-4 py-3" placeholder="Tell us your current sales challenge" />
+              <button type="button" className="rounded-md bg-accent px-6 py-3 font-semibold text-white hover:opacity-90">
+                Send Enquiry
+              </button>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
   );
