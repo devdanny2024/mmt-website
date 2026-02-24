@@ -1,140 +1,103 @@
-const navLinks = [
-  'About',
-  'Service',
-  'Process',
-  'Contact',
+const kpis = [
+  { value: 'Focused', label: 'Pipeline Execution' },
+  { value: 'Weekly', label: 'Sales Reporting' },
+  { value: 'Live', label: 'Market Feedback Loop' },
 ];
 
-const outcomes = [
+const process = [
   {
-    title: 'Focused Pipeline Execution',
-    text: 'Structured outreach and follow-up rhythms that move opportunities from interest to close.',
+    title: 'Discovery & Sales Brief',
+    description: 'We align on your offer, decision-makers, and realistic commercial targets.',
   },
   {
-    title: 'Market Signal Clarity',
-    text: 'Field-level feedback from real conversations to help sharpen your sales decisions quickly.',
+    title: 'Sales Outsourcing Rollout',
+    description: 'MMT handles outreach, qualification, and pipeline follow-up as an extension of your team.',
   },
   {
-    title: 'Operator-Level Reporting',
-    text: 'Transparent activity and outcome reporting so you can see what is working and what to improve.',
-  },
-];
-
-const processSteps = [
-  {
-    title: '01 — Sales Brief',
-    text: 'We align on your offer, target profile, and commercial goals to define a practical sales motion.',
+    title: 'Review & Optimization',
+    description: 'We continuously sharpen messaging, targeting, and conversion points from real call outcomes.',
   },
   {
-    title: '02 — Execution Sprint',
-    text: 'Our team runs outreach, qualification, and follow-up with clear accountability from day one.',
-  },
-  {
-    title: '03 — Review & Improve',
-    text: 'We review conversion points, refine messaging, and tighten execution every cycle.',
+    title: 'Scale Deliberately',
+    description: 'Once repeatable wins appear, we scale execution while maintaining quality control.',
   },
 ];
 
 export default function HomePage() {
   return (
-    <main className="page-shell">
-      <div className="aurora aurora-left" aria-hidden />
-      <div className="aurora aurora-right" aria-hidden />
-
-      <header className="top-nav">
-        <div className="brand">
-          <span className="brand-dot" />
-          <span>MMT</span>
+    <main className="bg-background">
+      <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div className="text-lg font-bold tracking-wider">MMT</div>
+          <a href="#contact" className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">
+            Book a Strategy Call
+          </a>
         </div>
-
-        <nav aria-label="Main Navigation">
-          <ul>
-            {navLinks.map((link) => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`}>{link}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <a href="#contact" className="nav-cta">
-          Book a Call
-        </a>
       </header>
 
-      <section className="hero-panel" id="about">
-        <p className="eyebrow">MMT - MAKRUTEN MARKET TUNNELS</p>
-        <h1>Let's get you a grip on your industry's market.</h1>
-        <p className="lead">
-          We run disciplined sales execution for teams that need consistent movement in their pipeline.
-          We are not a marketing agency.
-        </p>
-
-        <div className="hero-actions">
-          <a href="#contact" className="btn btn-primary">
-            Start Sales Outsourcing
-          </a>
-          <a href="#service" className="btn btn-ghost">
-            Explore Service
-          </a>
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1658317705991-cb398ae81043?auto=format&fit=crop&w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background to-background" />
+        <div className="relative mx-auto max-w-7xl px-4 py-28 text-center sm:px-6 lg:px-8">
+          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">MMT - Makruten Market Tunnels</p>
+          <h1 className="mx-auto mb-6 max-w-5xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+            Let&apos;s get you a grip on your industry&apos;s market.
+          </h1>
+          <p className="mx-auto mb-10 max-w-3xl text-xl text-muted-foreground">
+            We provide Sales Outsourcing for teams that need disciplined execution and measurable pipeline progress. We are not a marketing agency.
+          </p>
+          <a href="#service" className="rounded-md bg-accent px-8 py-4 text-lg font-semibold text-white hover:opacity-90">Explore Sales Outsourcing</a>
         </div>
       </section>
 
-      <section className="story-grid">
-        <article className="glass-card story" id="story">
-          <h2>Our Story</h2>
-          <p>
-            MMT exists to help companies run better sales with less guesswork. We built this around honest
-            communication, practical execution, and measurable outcomes. We focus on the work itself: understanding
-            your market, speaking with real prospects, and improving conversion through consistent action.
+      <section className="border-b border-border bg-card py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
+          {kpis.map((item) => (
+            <div key={item.label} className="rounded-xl border border-border bg-background/40 p-8">
+              <div className="mb-2 text-3xl font-bold text-accent">{item.value}</div>
+              <p className="text-muted-foreground">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="service" className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <article className="rounded-xl border border-border bg-card p-8">
+          <h2 className="mb-4 text-3xl font-bold">Our Story</h2>
+          <p className="text-muted-foreground leading-8">
+            MMT exists to help businesses run sales execution with more clarity and less guesswork. We built our approach around honest communication,
+            accountable execution, and consistent improvement from real market conversations.
           </p>
         </article>
-
-        <article className="glass-card service" id="service">
-          <h2>Our Service</h2>
-          <ul>
-            <li>
-              <span>Sales Outsourcing</span>
-              <p>Dedicated sales execution support tailored to your target market and revenue goals.</p>
-            </li>
-          </ul>
+        <article className="rounded-xl border border-border bg-card p-8">
+          <h2 className="mb-4 text-3xl font-bold">Service Offering</h2>
+          <h3 className="mb-3 text-xl font-semibold text-accent">Sales Outsourcing</h3>
+          <p className="text-muted-foreground leading-8">
+            We become your outsourced sales execution arm: outreach, qualification, follow-up, and pipeline movement aligned to your market and revenue goals.
+          </p>
         </article>
       </section>
 
-      <section className="outcomes" id="process">
-        {outcomes.map((item) => (
-          <article key={item.title} className="glass-card outcome-card">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="process-grid">
-        {processSteps.map((step) => (
-          <article key={step.title} className="glass-card process-card">
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="cta-panel" id="contact">
-        <p className="eyebrow">READY TO EXECUTE</p>
-        <h2>Need a reliable sales execution partner?</h2>
-        <p>Tell us your goals, and we will design a focused Sales Outsourcing plan around them.</p>
-        <a href="mailto:hello@mmt.company" className="btn btn-primary">
-          hello@mmt.company
-        </a>
-      </section>
-
-      <footer className="footer">
-        <div>
-          <strong>MMT</strong>
-          <p>Sales Outsourcing for teams that need structured, measurable sales momentum.</p>
+      <section className="bg-card py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-10 text-center text-4xl font-bold">How We Work</h2>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {process.map((step, i) => (
+              <article key={step.title} className="rounded-xl border border-border bg-background/40 p-6">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-accent">Step {i + 1}</p>
+                <h3 className="mb-3 text-xl font-semibold">{step.title}</h3>
+                <p className="text-muted-foreground">{step.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
-        <small>© {new Date().getFullYear()} MMT - Makruten Market Tunnels. All rights reserved.</small>
-      </footer>
+      </section>
+
+      <section id="contact" className="mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <h2 className="mb-4 text-4xl font-bold">Need a reliable sales execution partner?</h2>
+        <p className="mx-auto mb-8 max-w-2xl text-muted-foreground">Tell us your goals, and MMT will map a practical Sales Outsourcing plan around them.</p>
+        <a href="mailto:hello@mmt.company" className="rounded-md bg-accent px-8 py-4 text-lg font-semibold text-white hover:opacity-90">hello@mmt.company</a>
+      </section>
     </main>
   );
 }
