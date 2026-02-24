@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const kpis = [
   { value: 'Focused', label: 'Pipeline Execution' },
   { value: 'Weekly', label: 'Sales Reporting' },
@@ -11,7 +13,7 @@ const process = [
   },
   {
     title: 'Sales Outsourcing Rollout',
-    description: 'MMT handles outreach, qualification, and pipeline follow-up as an extension of your team.',
+    description: 'Makruten handles outreach, qualification, and pipeline follow-up as an extension of your team.',
   },
   {
     title: 'Review & Optimization',
@@ -28,7 +30,9 @@ export default function HomePage() {
     <main className="bg-background">
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <div className="text-lg font-bold tracking-wider">MMT</div>
+          <div className="flex items-center">
+            <Image src="/makruten-logo.png" alt="Makruten" width={220} height={48} className="h-8 w-auto" priority />
+          </div>
           <a href="#contact" className="rounded-md bg-accent px-4 py-2 text-sm font-semibold text-white hover:opacity-90">
             Book a Strategy Call
           </a>
@@ -39,7 +43,7 @@ export default function HomePage() {
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1658317705991-cb398ae81043?auto=format&fit=crop&w=1600&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background to-background" />
         <div className="relative mx-auto max-w-7xl px-4 py-28 text-center sm:px-6 lg:px-8">
-          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">MMT - MAKRUTEN MARKET TUNNELS</p>
+          <p className="mb-4 text-sm uppercase tracking-[0.2em] text-muted-foreground">MAKRUTEN MARKET TUNNELS</p>
           <h1 className="mx-auto mb-6 max-w-5xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
             &quot;Let&apos;s get you a grip on your industry&apos;s market.&quot;
           </h1>
@@ -65,7 +69,7 @@ export default function HomePage() {
         <article className="rounded-xl border border-border bg-card p-8">
           <h2 className="mb-4 text-3xl font-bold">Our Story</h2>
           <p className="text-muted-foreground leading-8">
-            MMT exists to help businesses run sales execution with more clarity and less guesswork. We built our approach around honest communication,
+            Makruten exists to help businesses run sales execution with more clarity and less guesswork. We built our approach around honest communication,
             accountable execution, and consistent improvement from real market conversations.
           </p>
         </article>
@@ -101,7 +105,7 @@ export default function HomePage() {
               Tell us your market and sales goals. We&apos;ll map a practical Sales Outsourcing execution plan with clear weekly actions.
             </p>
             <div className="space-y-3 text-sm text-muted-foreground">
-              <p><span className="font-semibold text-foreground">Email:</span> hello@mmt.company</p>
+              <p><span className="font-semibold text-foreground">Email:</span> hello@makruten.com</p>
               <p><span className="font-semibold text-foreground">Focus:</span> Sales Outsourcing only</p>
               <p><span className="font-semibold text-foreground">Positioning:</span> We are not a marketing agency.</p>
             </div>
