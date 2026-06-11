@@ -1,21 +1,29 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --card: #111111;
-  --muted-foreground: #a0a0a0;
-  --accent: #ff2a2a;
-  --border: #222222;
+  --background: #08080a;
+  --surface: #101015;
+  --surface-2: #16161d;
+  --foreground: #f6f6f8;
+  --muted-foreground: #9a9aa6;
+  --border: #242430;
+  --accent: #ff2e2e;
+  --accent-strong: #d81f1f;
+  --accent-foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
 }
 
 * {
@@ -28,23 +36,88 @@ html {
 
 body {
   @apply m-0 bg-background text-foreground antialiased;
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .font-display {
+    font-family: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.28em] text-accent;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition hover:bg-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-semibold text-foreground transition hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+  .card {
+    @apply rounded-2xl border border-border bg-surface p-7 transition hover:border-accent/40;
+  }
+  .field {
+    @apply w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-accent focus-visible:ring-2 focus-visible:ring-accent;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-muted-foreground;
+  }
+}
+
+/* Subtle reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect reduced-motion: no transforms, content always visible */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Decorative gradient/grid helpers */
+.glow-radial {
+  background: radial-gradient(60% 60% at 50% 0%, rgba(255, 46, 46, 0.16) 0%, rgba(255, 46, 46, 0) 70%);
+}
+.grid-mask {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 0%, transparent 80%);
+}
+.text-gradient {
+  background: linear-gradient(180deg, #ffffff 0%, #c9c9d2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--background);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #33333d;
   border-radius: 999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff2a2a;
+  background: var(--accent);
 }

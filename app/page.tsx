@@ -1,152 +1,172 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { Reveal } from '@/components/reveal';
+import { CtaBand } from '@/components/cta-band';
+import { brand, stats } from '@/lib/site';
 
-const metrics = [
-  { value: 'Focused', label: 'Pipeline Execution' },
-  { value: 'Weekly', label: 'Sales Reporting' },
-  { value: 'Live', label: 'Market Feedback Loop' },
+const pillars = [
+  {
+    title: 'Solutions Brokerage',
+    body: 'Tell us the problem. We find the right solution inside our vetted network and manage it end to end — so you do not have to chase suppliers, vet strangers, or carry the risk.',
+  },
+  {
+    title: 'Procurement & Logistics',
+    body: 'Equipment, maintenance teams, logistics — sourced, vetted, negotiated and coordinated on your behalf, so you are ready to deliver on contracts of any size.',
+  },
+  {
+    title: 'No Upfront Cost',
+    body: 'You pay nothing to start. We earn a percentage of the value we create — the money we save you and the deals we help you win. Our incentive is your outcome.',
+  },
 ];
 
-const process = [
-  {
-    step: 'Step 1',
-    title: 'Discovery & Sales Brief',
-    description: 'We align on your offer, decision-makers, and realistic commercial targets.',
-  },
-  {
-    step: 'Step 2',
-    title: 'Sales Outsourcing Rollout',
-    description: 'Makruten handles outreach, qualification, and pipeline follow-up as an extension of your team.',
-  },
-  {
-    step: 'Step 3',
-    title: 'Review & Optimization',
-    description: 'We continuously sharpen messaging, targeting, and conversion points from real call outcomes.',
-  },
-  {
-    step: 'Step 4',
-    title: 'Scale Deliberately',
-    description: 'Once repeatable wins appear, we scale execution while maintaining quality control.',
-  },
+const steps = [
+  { step: '01', title: 'Tell us the problem', body: 'Share the challenge, the contract you are preparing for, or what you need procured.' },
+  { step: '02', title: 'We match the solution', body: 'We tap our vetted network of 100+ companies and shortlist the best-fit partners for you.' },
+  { step: '03', title: 'We secure the best value', body: 'Pricing, terms, equipment, maintenance and logistics — negotiated and handled on your behalf.' },
+  { step: '04', title: 'You pay on value delivered', body: 'A percentage of what we save or earn you. Nothing upfront, ever.' },
 ];
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-        <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-3">
-            <Image src="/makruten-logo.png" alt="Makruten" width={220} height={48} className="h-8 w-auto" priority />
-          </a>
-          <div className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#service" className="transition-colors hover:text-foreground">Service</a>
-            <a href="#process" className="transition-colors hover:text-foreground">How We Work</a>
-            <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
-          </div>
-          <a href="#contact" className="rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90">
-            Book a Strategy Call
-          </a>
-        </nav>
-      </header>
-
-      <section id="top" className="relative overflow-hidden border-b border-border">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1658317705991-cb398ae81043?auto=format&fit=crop&w=1800&q=80')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background to-background" />
-
-        <div className="relative mx-auto max-w-7xl px-4 py-28 text-center sm:px-6 lg:px-8 lg:py-32">
-          <p className="mb-5 text-xs uppercase tracking-[0.28em] text-muted-foreground sm:text-sm">Makruten</p>
-          <h1 className="mx-auto mb-6 max-w-5xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
-            Let&apos;s get you a grip on your industry&apos;s market.
-          </h1>
-          <p className="mx-auto mb-10 max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">
-            We provide Sales Outsourcing for teams that need disciplined execution and measurable pipeline progress.
-            We are not a marketing agency.
-          </p>
-          <a href="#service" className="inline-block rounded-md bg-accent px-8 py-4 text-lg font-semibold text-white hover:opacity-90">
-            Explore Sales Outsourcing
-          </a>
+    <main>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-border">
+        <div className="grid-mask absolute inset-0" />
+        <div className="glow-radial absolute inset-0" />
+        <div className="container-x relative py-20 text-center sm:py-28">
+          <Reveal>
+            <p className="eyebrow mb-5">Solutions Brokerage · Procurement</p>
+          </Reveal>
+          <Reveal delay={80}>
+            <h1 className="mx-auto max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              <span className="text-gradient">Finding solutions to </span>
+              <span className="text-accent">every problem.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
+              {brand.name} takes the stress of outsourcing your problems off your plate. We tap a vetted network of
+              companies to find the right solution, procure what you need, and secure the best value — with{' '}
+              <span className="text-foreground">no upfront cost</span>.
+            </p>
+          </Reveal>
+          <Reveal delay={240}>
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link href="/join" className="btn-primary">
+                Join Our Network
+              </Link>
+              <Link href="/solutions" className="btn-ghost">
+                How it works
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="border-b border-border bg-card py-16">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 text-center sm:grid-cols-3 sm:px-6 lg:px-8">
-          {metrics.map((metric) => (
-            <article key={metric.label} className="rounded-xl border border-border bg-background/40 p-8">
-              <p className="mb-2 text-3xl font-bold text-accent">{metric.value}</p>
-              <p className="text-muted-foreground">{metric.label}</p>
-            </article>
+      {/* Stats */}
+      <section className="border-b border-border">
+        <div className="container-x grid grid-cols-2 gap-px overflow-hidden bg-border lg:grid-cols-4">
+          {stats.map((s) => (
+            <div key={s.label} className="bg-background px-6 py-10 text-center">
+              <p className="font-display text-3xl font-bold text-accent sm:text-4xl">{s.value}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{s.label}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      <section id="service" className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <article className="rounded-xl border border-border bg-card p-8">
-          <h2 className="mb-4 text-3xl font-bold">Our Story</h2>
-          <p className="leading-8 text-muted-foreground">
-            Makruten exists to help businesses run sales execution with more clarity and less guesswork. We built our
-            approach around honest communication, accountable execution, and consistent improvement from real market conversations.
+      {/* What we do */}
+      <section className="container-x py-20 sm:py-24">
+        <Reveal>
+          <p className="eyebrow mb-4">What we do</p>
+          <h2 className="max-w-3xl font-display text-3xl font-bold leading-tight sm:text-4xl">
+            One partner between you and every solution you need.
+          </h2>
+          <p className="mt-4 max-w-2xl text-muted-foreground">
+            Outsourcing problems to other companies is stressful and risky. We sit in the middle — a single,
+            accountable partner who finds the right company for the job and makes sure you get the best value for your
+            money.
           </p>
-        </article>
+        </Reveal>
 
-        <article className="rounded-xl border border-border bg-card p-8">
-          <h2 className="mb-4 text-3xl font-bold">Service Offering</h2>
-          <h3 className="mb-3 text-xl font-semibold text-accent">Sales Outsourcing</h3>
-          <p className="leading-8 text-muted-foreground">
-            We become your outsourced sales execution arm: outreach, qualification, follow-up, and pipeline movement aligned
-            to your market and revenue goals.
-          </p>
-        </article>
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {pillars.map((p, i) => (
+            <Reveal key={p.title} delay={i * 90}>
+              <article className="card h-full">
+                <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 font-display font-bold text-accent">
+                  {i + 1}
+                </div>
+                <h3 className="mb-3 font-display text-xl font-semibold">{p.title}</h3>
+                <p className="leading-7 text-muted-foreground">{p.body}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
-      <section id="process" className="bg-card py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-10 text-center text-4xl font-bold sm:text-5xl">How We Work</h2>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {process.map((item) => (
-              <article key={item.title} className="rounded-xl border border-border bg-background/40 p-6">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-accent">{item.step}</p>
-                <h3 className="mb-3 text-xl font-semibold">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </article>
+      {/* How it works */}
+      <section className="border-y border-border bg-surface/40 py-20 sm:py-24">
+        <div className="container-x">
+          <Reveal>
+            <p className="eyebrow mb-4 text-center">How it works</p>
+            <h2 className="mx-auto max-w-2xl text-center font-display text-3xl font-bold sm:text-4xl">
+              From problem to delivered outcome.
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((item, i) => (
+              <Reveal key={item.step} delay={i * 80}>
+                <article className="card h-full bg-background">
+                  <p className="mb-3 font-display text-3xl font-bold text-accent/80">{item.step}</p>
+                  <h3 className="mb-2 font-display text-lg font-semibold">{item.title}</h3>
+                  <p className="text-sm leading-7 text-muted-foreground">{item.body}</p>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="border-t border-border bg-card/60 py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <article className="rounded-xl border border-border bg-background/40 p-8">
-            <h2 className="mb-3 text-4xl font-bold">Contact Us</h2>
-            <p className="mb-8 text-muted-foreground">
-              Tell us your market and sales goals. We&apos;ll map a practical Sales Outsourcing execution plan with clear weekly actions.
+      {/* Case highlight */}
+      <section className="container-x py-20 sm:py-24">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          <Reveal>
+            <p className="eyebrow mb-4">Proof, not promises</p>
+            <h2 className="font-display text-3xl font-bold leading-tight sm:text-4xl">
+              We helped finalize a contract worth over ₦100 billion.
+            </h2>
+            <p className="mt-5 leading-8 text-muted-foreground">
+              When one of our clients landed the biggest contract of their life — over ₦100 billion — they were not yet
+              ready to deliver. {brand.name} stepped in: we helped finalize the contract, sourced the right equipment,
+              assembled a maintenance team, and handled the logistics end to end.
             </p>
-            <div className="space-y-3 text-sm text-muted-foreground">
-              <p><span className="font-semibold text-foreground">Email:</span> hello@makruten.com</p>
-              <p><span className="font-semibold text-foreground">Focus:</span> Sales Outsourcing only</p>
-              <p><span className="font-semibold text-foreground">Positioning:</span> We are not a marketing agency.</p>
-            </div>
-          </article>
+            <p className="mt-4 leading-8 text-muted-foreground">
+              In our first year of operation, we have drawn billions of naira worth of interest for the companies we
+              work with. That is what solutions brokerage looks like.
+            </p>
+            <Link href="/about" className="btn-ghost mt-8">
+              Read our story
+            </Link>
+          </Reveal>
 
-          <form className="rounded-xl border border-border bg-background/40 p-8">
-            <div className="grid gap-4">
-              <input className="rounded-md border border-border bg-background px-4 py-3 outline-none focus:border-accent" placeholder="Full name" />
-              <input className="rounded-md border border-border bg-background px-4 py-3 outline-none focus:border-accent" placeholder="Work email" />
-              <input className="rounded-md border border-border bg-background px-4 py-3 outline-none focus:border-accent" placeholder="Company" />
-              <textarea className="min-h-32 rounded-md border border-border bg-background px-4 py-3 outline-none focus:border-accent" placeholder="Tell us your current sales challenge" />
-              <button type="button" className="rounded-md bg-accent px-6 py-3 font-semibold text-white hover:opacity-90">
-                Send Enquiry
-              </button>
+          <Reveal delay={120}>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[
+                { k: 'Contract finalized', v: '₦100B+' },
+                { k: 'Companies in network', v: '100+' },
+                { k: 'Upfront cost', v: '₦0' },
+                { k: 'Handled end to end', v: 'Equipment · Team · Logistics' },
+              ].map((b) => (
+                <div key={b.k} className="card">
+                  <p className="font-display text-2xl font-bold text-accent">{b.v}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{b.k}</p>
+                </div>
+              ))}
             </div>
-          </form>
+          </Reveal>
         </div>
       </section>
+
+      <CtaBand />
     </main>
   );
 }

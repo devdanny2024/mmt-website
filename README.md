@@ -1,32 +1,56 @@
-# MMT Website Instance
+# Makruten — Solutions Brokerage Website
 
-Dark-themed business website implementation for **MMT - Makruten Market Tunnels**.
+Marketing site for **Makruten (Makruten Market Tunnels)** — a solutions brokerage and procurement partner.
+Motto: _"Finding solutions to every problem."_
 
-## Included Files
+Built with **Next.js 14 (App Router)**, **React 18**, **TypeScript** and **Tailwind CSS v4**.
 
-- `index.html` — full page structure and constrained copy
-- `styles.css` — dark-themed styling
-- `script.js` — tiny interaction script (year + form confirmation)
+## Pages
 
-## Content Constraint Compliance
+| Route | Purpose |
+|---|---|
+| `/` | Home — positioning, stats, what we do, process, ₦100B+ case highlight |
+| `/about` | Our story + the ₦100 billion contract + values |
+| `/solutions` | Solutions brokerage & procurement, "Join the Network", no-upfront-cost pricing |
+| `/join` | Become a network partner — what joining means + application form |
+| `/contact` | Enquiry form + contact details |
 
-1. **OUR STORY** section contains no founding year, years of experience, or partner-company claims.
-2. Tagline is included exactly as: **"Let's get you a grip on your industry's market."**
-   - Surrounding copy positions MMT as **market intelligence + sales execution support**, not a marketing agency.
-3. Services section includes **only one service**: **Sales Outsourcing**.
+## Positioning (current)
 
-## Preview / Run
+- **Primary:** Solutions Brokerage / procurement — we find the right company in a **vetted network** to solve a client's problem and secure the best value.
+- **No upfront cost** — clients pay a **percentage of the value created** (savings + wins).
+- **Sales outsourcing** is reframed as **"Join the Network."**
+- Proof points: helped finalize a **₦100B+ contract** (equipment, maintenance team, logistics), **100+ companies** in network, **billions in interest** drawn in year one.
 
-### Option A: Quick local open
-Open `index.html` directly in your browser.
+## Forms (Formspree)
 
-### Option B: Local static server (recommended)
-From this folder run:
+Both the Join and Contact forms POST to the server route `app/api/lead/route.ts`, which emails the
+submission via **SMTP** (nodemailer). Any working SMTP mailbox works.
 
-```powershell
-python -m http.server 8080
+1. Copy `.env.example` to `.env.local` and fill in `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`,
+   `MAIL_TO`, `MAIL_FROM`.
+2. Add the same variables in **Vercel → Settings → Environment Variables** (the API route needs them at
+   runtime — `.env.local` is not deployed).
+
+Note: some hosts throttle outbound SMTP. If delivery is unreliable on Vercel, switch the route to a
+transactional email API (Resend/SendGrid) over HTTPS — same route, different transport.
+
+## Develop
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Then open:
+## Build
 
-`http://localhost:8080`
+```bash
+npm run build
+npm start
+```
+
+## Handoff / to-do
+
+- Swap placeholder imagery for visuals featuring Black / African business people (client to provide).
+- Point `brand.email` in `lib/site.ts` to the corporate email once provisioned.
+- Set the `SMTP_*` / `MAIL_*` environment variables in Vercel (currently a placeholder Gmail mailbox).
